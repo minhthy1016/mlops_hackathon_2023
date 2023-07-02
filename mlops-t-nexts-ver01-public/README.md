@@ -1,6 +1,6 @@
 # MLOps Marathon 2023 - Sample solution
 
-This repository is the sample solution for MLOps Marathon 2023.
+This repository is the step by step guides for MLOps Marathon 2023 team T-NEXTS.
 
 ## Quickstart
 
