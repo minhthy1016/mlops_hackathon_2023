@@ -12,7 +12,7 @@ from problem_config import (
     ProblemConst,
     get_prob_config,
 )
-from raw_data_processor import RawDataProcessor
+from raw_data_process import RawDataProcessor
 from utils import AppConfig
 # show logged mlflow data 
 from mlflow_utils import fetch_logged_data
@@ -93,6 +93,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase-id", type=str, default=ProblemConst.PHASE1)
     parser.add_argument("--prob-id", type=str, default=ProblemConst.PROB1)
+    parser.add_argument("--prob-id", type=str, default=ProblemConst.PROB2)
     parser.add_argument(
         "--add-captured-data", type=lambda x: (str(x).lower() == "true"), default=False
     )

@@ -1,6 +1,6 @@
 # MLOps Marathon 2023 - Sample solution
 
-This repository is the step by step guides for MLOps Marathon 2023 team T-NEXTS.
+This repository is the sample solution for MLOps Marathon 2023.
 
 ## Quickstart
 
@@ -60,16 +60,16 @@ This repository is the step by step guides for MLOps Marathon 2023 team T-NEXTS.
     -   Train model
 
         ```bash
-        export MLFLOW_TRACKING_URI=http://localhost:5040
+        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/model_trainer.py --phase-id phase-1 --prob-id prob-1
         ```
 
         ```bash
-        export MLFLOW_TRACKING_URI=http://localhost:5040
+        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/model_trainer.py --phase-id phase-2 --prob-id prob-2
         ```
 
-    -   Register model: Go to mlflow UI at <http://localhost:5040> and register a new model named **phase-1_prob-1_model-1** and **phase-1_prob-2_model-2**
+    -   Register model: Go to mlflow UI at <http://localhost:5000> and register a new model named **phase-1_prob-1_model-1** and **phase-1_prob-2_model-2**
 
 3.  Deploy model predictor
 
@@ -95,11 +95,11 @@ This repository is the step by step guides for MLOps Marathon 2023 team T-NEXTS.
 
         ```bash
         # run model predictor
-        export MLFLOW_TRACKING_URI=http://localhost:5040
+        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/model_predictor.py --config-path data/model_config/phase-1/prob-1/model-1.yaml --port 8000
 
         # run model predictor
-        export MLFLOW_TRACKING_URI=http://localhost:5040
+        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/model_predictor.py --config-path data/model_config/phase-1/prob-2/model-1.yaml --port 8000
 
         # curl in another terminal
@@ -154,11 +154,11 @@ This repository is the step by step guides for MLOps Marathon 2023 team T-NEXTS.
     -   Improve model with updated data
 
         ```bash
-        export MLFLOW_TRACKING_URI=http://localhost:5040
+        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/model_trainer.py --phase-id phase-1 --prob-id prob-1 --add-captured-data true
         ```
 
-    -   Register model: Go to mlflow UI at <http://localhost:5040> and register model using the existing name **phase-1_prob-1_model-1**. The latest model version now should be `2`.
+    -   Register model: Go to mlflow UI at <http://localhost:5000> and register model using the existing name **phase-1_prob-1_model-1**. The latest model version now should be `2`.
 
     -   Update model config at `data/model_config/phase-1/prob-1/model-1.yaml` to:
 

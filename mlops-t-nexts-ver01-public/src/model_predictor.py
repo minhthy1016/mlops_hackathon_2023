@@ -13,7 +13,7 @@ from pandas.util import hash_pandas_object
 from pydantic import BaseModel
 
 from problem_config import ProblemConst, create_prob_config
-from raw_data_processor import RawDataProcessor
+from raw_data_process import RawDataProcessor
 from utils import AppConfig, AppPath
 
 PREDICTOR_API_PORT = 8000
@@ -23,6 +23,7 @@ class Data(BaseModel):
     id: str
     rows: list
     columns: list
+    
 
 
 class ModelPredictor:
@@ -73,8 +74,11 @@ class ModelPredictor:
         logging.info(f"prediction takes {run_time} ms")
         return {
             "id": data.id,
+            # "numeric_columns": data.tolist() ,
+            # "category_columns": data.tolist() ,
+            # "target_column": prediction.tolist(),
             "predictions": prediction.tolist(),
-            "drift": is_drifted,
+            "drift": is_drifted,   
         }
 
     @staticmethod
@@ -98,7 +102,7 @@ class PredictorApi:
             return {"message": "hello"}
 
         @self.app.post("/phase-1/prob-1/predict") 
-        @self.app.post("/phase-2/prob-2/predict")
+        @self.app.post("/phase-1/prob-2/predict")
                 
         async def predict(data: Data, request: Request):
             self._log_request(request)
